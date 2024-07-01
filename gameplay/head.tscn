@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bss23e1ose6yb"]
+
+[ext_resource type="Texture2D" uid="uid://bocojpjvkpmqr" path="res://gameplay/sprites/snake-head.png" id="1_ciwy3"]
+[ext_resource type="Script" path="res://gameplay/head.gd" id="1_wycpl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ui88m"]
+radius = 28.0045
+
+[node name="Head" type="Area2D"]
+script = ExtResource("1_wycpl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ciwy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_ui88m")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
