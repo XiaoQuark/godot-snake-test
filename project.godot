@@ -24,6 +24,10 @@ Global="*res://autoloads/global.gd"
 window/size/viewport_width=480
 window/size/viewport_height=960
 
+[dotnet]
+
+project/assembly_name="snake-test"
+
 [input]
 
 ui_left={

@@ -1,10 +1,11 @@
 class_name Spawner extends Node2D
 #signals
 signal tail_added(tail:Tail)
+@onready var head = %Head
 
 #export vars
 @export var bounds:Bounds
-
+#var head_scene:PackedScene = preload("res://gameplay/head.tscn")
 #instatiating packed scenes
 var food_scene:PackedScene = preload("res://gameplay/food.tscn") #preloads food into memory so instantiation is faster
 var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
@@ -24,7 +25,9 @@ func spawn_food():
 	get_parent().add_child(food) #parent of spawner is gameplay, so we are adding child food to gameplay. this method works for simple projects
 
 func spawn_tail(pos:Vector2):
-	var tail:Tail = tail_scene.instantiate(10) as Tail
-	tail.position = pos
-	get_parent().add_child(tail)
-	tail_added.emit(tail)
+	var head_position = head.position
+	for i in 30:
+		var tail:Tail = tail_scene.instantiate() as Tail
+		tail.position = pos + Vector2(head_position.x, (i + 9) * Global.CELL_SIZE)
+		get_parent().add_child(tail)
+		tail_added.emit(tail)

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://gameplay/bounds.gd" id="3_2fkhv"]
 [ext_resource type="Script" path="res://gameplay/spawner.gd" id="5_rex01"]
 [ext_resource type="PackedScene" uid="uid://80hpjr6jw12d" path="res://menus/hud.tscn" id="6_qs64w"]
-[ext_resource type="PackedScene" uid="uid://c1ojpetuc5ffa" path="res://gameplay/snake_parts.tscn" id="7_sj8pk"]
+[ext_resource type="Script" path="res://gameplay/snakebody.gd" id="7_o80fj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3lxk"]
 texture = ExtResource("2_dwsbb")
@@ -50,6 +50,6 @@ bounds = NodePath("../Bounds")
 [node name="HUD" parent="." instance=ExtResource("6_qs64w")]
 unique_name_in_owner = true
 
-[node name="SnakeParts" parent="." instance=ExtResource("7_sj8pk")]
+[node name="snakebody" type="Node" parent="."]
 unique_name_in_owner = true
-position = Vector2(192, 256)
+script = ExtResource("7_o80fj")
